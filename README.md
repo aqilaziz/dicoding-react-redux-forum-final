@@ -26,3 +26,6 @@ npm run build
 
 Continuous Integration menggunakan GitHub Actions di `.github/workflows/ci.yml`.
 Continuous Deployment menggunakan Vercel.
+
+URL aplikasi: https://dicoding-react-redux-forum.vercel.app/
+Repository: https://github.com/aqilaziz/dicoding-react-redux-forum-final
