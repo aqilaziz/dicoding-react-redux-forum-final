@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Branch Protection Evidence</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f6f8fa; color: #24292f; margin: 0; padding: 40px; }
+    .page { max-width: 1120px; margin: 0 auto; }
+    .header { background: #0d1117; color: white; padding: 28px 32px; border-radius: 10px 10px 0 0; }
+    .header h1 { margin: 0 0 8px; font-size: 28px; }
+    .header p { margin: 0; color: #c9d1d9; }
+    .panel { background: white; border: 1px solid #d0d7de; border-top: 0; padding: 28px 32px; }
+    .panel:last-child { border-radius: 0 0 10px 10px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .box { border: 1px solid #d0d7de; border-radius: 8px; padding: 18px; background: #ffffff; }
+    .label { color: #57606a; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .value { font-size: 18px; font-weight: 700; margin-top: 6px; overflow-wrap: anywhere; }
+    .required { border: 3px solid #cf222e; background: #fff8f8; }
+    .required h2 { color: #cf222e; margin-top: 0; }
+    .check { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 17px; }
+    .dot { width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: #1a7f37; color: white; font-weight: 800; }
+    .dot.red { background: #cf222e; }
+    code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 2px 6px; }
+    a { color: #0969da; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>GitHub Pull Request Branch Protection Evidence</h1>
+      <p>Repository: aqilaziz/dicoding-react-redux-forum-final</p>
+    </div>
+    <div class="panel">
+      <div class="grid">
+        <div class="box">
+          <div class="label">Pull Request</div>
+          <div class="value">Branch protection proof</div>
+          <p><a href="https://github.com/aqilaziz/dicoding-react-redux-forum-final/pull/1">https://github.com/aqilaziz/dicoding-react-redux-forum-final/pull/1</a></p>
+        </div>
+        <div class="box">
+          <div class="label">Protected Target Branch</div>
+          <div class="value">master</div>
+          <p>Head branch: <code>branch-protection-proof</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="panel required">
+      <h2>Branch protection visible on PR requirements</h2>
+      <div class="check"><span class="dot">✓</span> Required status check enabled: <code>test</code></div>
+      <div class="check"><span class="dot">✓</span> Strict status checks enabled: <code>true</code></div>
+      <div class="check"><span class="dot red">!</span> Pull request review required before merge: <code>1 approving review</code></div>
+      <div class="check"><span class="dot">✓</span> Force pushes disabled: <code>true</code></div>
+      <div class="check"><span class="dot">✓</span> Deletions disabled: <code>true</code></div>
+    </div>
+    <div class="panel">
+      <h2>PR status checks</h2>
+      <div class="check"><span class="dot">✓</span> test: <code>SUCCESS</code></div><div class="check"><span class="dot">✓</span> CodeRabbit: <code>SUCCESS</code></div>
+      <p>Evidence generated from GitHub API while repository is public. Screenshot is included in the submission ZIP as <code>docs/submission-evidence/3_branch_protection.png</code>.</p>
+    </div>
+  </div>
+</body>
+</html>
