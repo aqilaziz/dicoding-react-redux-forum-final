@@ -3,11 +3,11 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import api from '../../../utils/api.js'
 import authReducer, { fetchLoggedUser, loginUser } from '../authSlice.js'
 
-function createStore() {
+function createStore () {
   return configureStore({
     reducer: {
-      auth: authReducer,
-    },
+      auth: authReducer
+    }
   })
 }
 

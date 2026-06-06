@@ -4,7 +4,7 @@ import HtmlContent from './HtmlContent.jsx'
 import VoteButtons from './VoteButtons.jsx'
 import { stripHtml } from '../utils/format.js'
 
-export default function ThreadCard({ thread, owner, authUserId, onVote }) {
+export default function ThreadCard ({ thread, owner, authUserId, onVote }) {
   const preview = stripHtml(thread.body).slice(0, 180)
 
   return (

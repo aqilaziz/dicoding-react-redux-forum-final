@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAppSelector } from '../states/hooks.js'
 
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute ({ children }) {
   const location = useLocation()
   const { user, isInitializing } = useAppSelector((state) => state.auth)
 

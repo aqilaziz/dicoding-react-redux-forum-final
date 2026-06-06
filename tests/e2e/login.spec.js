@@ -6,7 +6,7 @@ test('skenario: pengguna yang sudah terdaftar dapat login dan diarahkan ke halam
     name: 'Playwright User',
     email: 'playwright@example.com',
     password: 'password123',
-    avatar: 'https://ui-avatars.com/api/?name=Playwright+User&background=random',
+    avatar: 'https://ui-avatars.com/api/?name=Playwright+User&background=random'
   }
 
   await page.route('https://forum-api.dicoding.dev/v1/login', async (route) => {
@@ -17,9 +17,9 @@ test('skenario: pengguna yang sudah terdaftar dapat login dan diarahkan ke halam
         status: 'success',
         message: 'login success',
         data: {
-          token: 'token-playwright',
-        },
-      }),
+          token: 'token-playwright'
+        }
+      })
     })
   })
 
@@ -31,9 +31,9 @@ test('skenario: pengguna yang sudah terdaftar dapat login dan diarahkan ke halam
         status: 'success',
         message: 'user retrieved',
         data: {
-          user,
-        },
-      }),
+          user
+        }
+      })
     })
   })
 
@@ -45,9 +45,9 @@ test('skenario: pengguna yang sudah terdaftar dapat login dan diarahkan ke halam
         status: 'success',
         message: 'threads retrieved',
         data: {
-          threads: [],
-        },
-      }),
+          threads: []
+        }
+      })
     })
   })
 
@@ -59,9 +59,9 @@ test('skenario: pengguna yang sudah terdaftar dapat login dan diarahkan ke halam
         status: 'success',
         message: 'users retrieved',
         data: {
-          users: [user],
-        },
-      }),
+          users: [user]
+        }
+      })
     })
   })
 

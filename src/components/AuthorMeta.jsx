@@ -1,6 +1,6 @@
 import { postedAt } from '../utils/format.js'
 
-export default function AuthorMeta({ user, createdAt }) {
+export default function AuthorMeta ({ user, createdAt }) {
   return (
     <div className="thread-meta">
       {user?.avatar && <img className="avatar" src={user.avatar} alt={user.name} />}

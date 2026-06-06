@@ -10,7 +10,7 @@ export const fetchUsers = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 const usersSlice = createSlice({
@@ -18,7 +18,7 @@ const usersSlice = createSlice({
   initialState: {
     items: [],
     isLoading: false,
-    error: null,
+    error: null
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -34,7 +34,7 @@ const usersSlice = createSlice({
         state.error = action.payload
         state.isLoading = false
       })
-  },
+  }
 })
 
 export default usersSlice.reducer

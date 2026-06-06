@@ -2,52 +2,55 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import react from 'eslint-plugin-react'
+import { FlatCompat } from '@eslint/eslintrc'
 
-export default defineConfig([
-  globalIgnores(['dist']),
+const compat = new FlatCompat({
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all
+})
+
+export default [
+  {
+    ignores: ['dist', 'node_modules', 'playwright-report', 'test-results']
+  },
+  ...compat.extends('standard'),
   {
     files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
+    plugins: {
+      react,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh
+    },
     languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: globals.browser,
-      parserOptions: { ecmaFeatures: { jsx: true } },
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
     },
     rules: {
-      semi: ['error', 'never'],
-      quotes: ['error', 'single'],
-      'comma-dangle': ['error', 'always-multiline'],
-      'no-trailing-spaces': 'error',
-    },
+      ...reactHooks.configs.recommended.rules,
+      'react/jsx-uses-vars': 'error',
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }]
+    }
   },
   {
     files: ['**/*.test.{js,jsx}', 'src/test/**/*.js'],
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.vitest,
-      },
-    },
+        ...globals.vitest
+      }
+    }
   },
   {
-    files: ['cypress/**/*.js'],
+    files: ['playwright.config.js', 'tests/**/*.js'],
     languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.mocha,
-        cy: 'readonly',
-        Cypress: 'readonly',
-      },
-    },
-  },
-  {
-    files: ['playwright.config.js'],
-    languageOptions: {
-      globals: globals.node,
-    },
-  },
-])
+      globals: globals.node
+    }
+  }
+]

@@ -11,6 +11,6 @@ export const store = configureStore({
     users: usersReducer,
     threads: threadsReducer,
     threadDetail: threadDetailReducer,
-    leaderboards: leaderboardsReducer,
-  },
+    leaderboards: leaderboardsReducer
+  }
 })

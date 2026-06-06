@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function NotFoundPage() {
+export default function NotFoundPage () {
   return (
     <section className="form-card">
       <h1 className="page-title">Halaman tidak ditemukan</h1>

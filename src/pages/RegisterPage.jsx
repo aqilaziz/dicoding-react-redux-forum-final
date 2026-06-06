@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { registerUser } from '../states/auth/authSlice.js'
 import { useAppDispatch, useAppSelector } from '../states/hooks.js'
 
-export default function RegisterPage() {
+export default function RegisterPage () {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { isLoading, error } = useAppSelector((state) => state.auth)
@@ -11,7 +11,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  async function handleSubmit(event) {
+  async function handleSubmit (event) {
     event.preventDefault()
     await dispatch(registerUser({ name, email, password })).unwrap()
     navigate('/login')

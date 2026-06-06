@@ -5,7 +5,7 @@ import VoteButtons from '../VoteButtons.jsx'
 describe('VoteButtons component', () => {
   const thread = {
     upVotesBy: ['user-1'],
-    downVotesBy: [],
+    downVotesBy: []
   }
 
   it('skenario: menampilkan jumlah vote dan status aktif milik user', () => {

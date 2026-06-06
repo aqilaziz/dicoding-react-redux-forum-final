@@ -1,22 +1,22 @@
 const API_BASE_URL = 'https://forum-api.dicoding.dev/v1'
 const TOKEN_KEY = 'dicoding_forum_token'
 
-function getToken() {
+function getToken () {
   return localStorage.getItem(TOKEN_KEY)
 }
 
-function putToken(token) {
+function putToken (token) {
   localStorage.setItem(TOKEN_KEY, token)
 }
 
-function removeToken() {
+function removeToken () {
   localStorage.removeItem(TOKEN_KEY)
 }
 
-async function request(path, options = {}) {
+async function request (path, options = {}) {
   const token = getToken()
   const headers = {
-    ...options.headers,
+    ...options.headers
   }
 
   if (options.body) {
@@ -29,7 +29,7 @@ async function request(path, options = {}) {
 
   const response = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
-    headers,
+    headers
   })
   const payload = await response.json()
 
@@ -41,70 +41,70 @@ async function request(path, options = {}) {
 }
 
 const api = {
-  async register({ name, email, password }) {
+  async register ({ name, email, password }) {
     return request('/register', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password })
     })
   },
 
-  async login({ email, password }) {
+  async login ({ email, password }) {
     const data = await request('/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password })
     })
     putToken(data.token)
     return data.token
   },
 
-  async getOwnProfile() {
+  async getOwnProfile () {
     return request('/users/me')
   },
 
-  async getAllUsers() {
+  async getAllUsers () {
     return request('/users')
   },
 
-  async getAllThreads() {
+  async getAllThreads () {
     return request('/threads')
   },
 
-  async getThreadDetail(threadId) {
+  async getThreadDetail (threadId) {
     return request(`/threads/${threadId}`)
   },
 
-  async createThread({ title, body, category }) {
+  async createThread ({ title, body, category }) {
     return request('/threads', {
       method: 'POST',
-      body: JSON.stringify({ title, body, category }),
+      body: JSON.stringify({ title, body, category })
     })
   },
 
-  async createComment({ threadId, content }) {
+  async createComment ({ threadId, content }) {
     return request(`/threads/${threadId}/comments`, {
       method: 'POST',
-      body: JSON.stringify({ content }),
+      body: JSON.stringify({ content })
     })
   },
 
-  async voteThread({ threadId, voteType }) {
+  async voteThread ({ threadId, voteType }) {
     return request(`/threads/${threadId}/${voteType}`, {
-      method: 'POST',
+      method: 'POST'
     })
   },
 
-  async voteComment({ threadId, commentId, voteType }) {
+  async voteComment ({ threadId, commentId, voteType }) {
     return request(`/threads/${threadId}/comments/${commentId}/${voteType}`, {
-      method: 'POST',
+      method: 'POST'
     })
   },
 
-  async getLeaderboards() {
+  async getLeaderboards () {
     return request('/leaderboards')
   },
 
   getToken,
-  removeToken,
+  removeToken
 }
 
 export default api

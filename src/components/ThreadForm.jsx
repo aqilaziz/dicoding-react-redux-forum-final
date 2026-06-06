@@ -1,16 +1,16 @@
 import { useState } from 'react'
 
-export default function ThreadForm({ isLoading, onSubmit }) {
+export default function ThreadForm ({ isLoading, onSubmit }) {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [body, setBody] = useState('')
 
-  function handleSubmit(event) {
+  function handleSubmit (event) {
     event.preventDefault()
     onSubmit({
       title,
       category: category || 'umum',
-      body,
+      body
     })
   }
 

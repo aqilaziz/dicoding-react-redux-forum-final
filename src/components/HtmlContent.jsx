@@ -1,4 +1,4 @@
-export default function HtmlContent({ html }) {
+export default function HtmlContent ({ html }) {
   return (
     <div
       className="html-content"

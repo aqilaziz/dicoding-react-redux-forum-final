@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { fetchLeaderboards } from '../states/leaderboards/leaderboardsSlice.js'
 import { useAppDispatch, useAppSelector } from '../states/hooks.js'
 
-export default function LeaderboardPage() {
+export default function LeaderboardPage () {
   const dispatch = useAppDispatch()
   const { items, isLoading, error } = useAppSelector((state) => state.leaderboards)
 

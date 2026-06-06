@@ -13,10 +13,10 @@ import {
   optimisticVoteComment,
   optimisticVoteDetailThread,
   voteComment,
-  voteDetailThread,
+  voteDetailThread
 } from '../states/threadDetail/threadDetailSlice.js'
 
-export default function ThreadDetailPage() {
+export default function ThreadDetailPage () {
   const { threadId } = useParams()
   const dispatch = useAppDispatch()
   const { user } = useAppSelector((state) => state.auth)
@@ -30,11 +30,11 @@ export default function ThreadDetailPage() {
     }
   }, [dispatch, threadId])
 
-  function handleSubmitComment(content) {
+  function handleSubmitComment (content) {
     dispatch(createComment({ threadId, content }))
   }
 
-  function handleThreadVote(voteType) {
+  function handleThreadVote (voteType) {
     if (!user) {
       return
     }
@@ -43,7 +43,7 @@ export default function ThreadDetailPage() {
     dispatch(voteDetailThread({ threadId, voteType }))
   }
 
-  function handleCommentVote(commentId, voteType) {
+  function handleCommentVote (commentId, voteType) {
     if (!user) {
       return
     }
@@ -51,12 +51,12 @@ export default function ThreadDetailPage() {
     dispatch(optimisticVoteComment({
       commentId,
       userId: user.id,
-      voteType,
+      voteType
     }))
     dispatch(voteComment({
       threadId,
       commentId,
-      voteType,
+      voteType
     }))
   }
 
@@ -77,13 +77,15 @@ export default function ThreadDetailPage() {
 
       <section className="comments">
         <h2>{thread.comments.length} Komentar</h2>
-        {user ? (
+        {user
+          ? (
           <CommentForm isLoading={isMutating} onSubmit={handleSubmitComment} />
-        ) : (
+            )
+          : (
           <p className="message">
             <Link to="/login">Masuk</Link> untuk menulis komentar.
           </p>
-        )}
+            )}
         {thread.comments.map((comment) => (
           <CommentItem
             authUserId={user?.id}

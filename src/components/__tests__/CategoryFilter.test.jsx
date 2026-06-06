@@ -10,7 +10,7 @@ describe('CategoryFilter component', () => {
         activeCategory="redux"
         categories={['react', 'redux']}
         onChange={() => {}}
-      />,
+      />
     )
 
     expect(screen.getByRole('button', { name: '#redux' })).toHaveClass('active')
@@ -24,7 +24,7 @@ describe('CategoryFilter component', () => {
         activeCategory="all"
         categories={['react']}
         onChange={onChange}
-      />,
+      />
     )
 
     await userEvent.click(screen.getByRole('button', { name: '#react' }))

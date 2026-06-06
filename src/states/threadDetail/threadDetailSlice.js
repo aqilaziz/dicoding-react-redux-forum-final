@@ -10,7 +10,7 @@ export const fetchThreadDetail = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 export const createComment = createAsyncThunk(
@@ -22,7 +22,7 @@ export const createComment = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 export const voteDetailThread = createAsyncThunk(
@@ -34,7 +34,7 @@ export const voteDetailThread = createAsyncThunk(
     } catch (error) {
       return rejectWithValue({ ...payload, message: error.message })
     }
-  },
+  }
 )
 
 export const voteComment = createAsyncThunk(
@@ -46,10 +46,10 @@ export const voteComment = createAsyncThunk(
     } catch (error) {
       return rejectWithValue({ ...payload, message: error.message })
     }
-  },
+  }
 )
 
-function applyVote(target, userId, voteType) {
+function applyVote (target, userId, voteType) {
   target.upVotesBy = target.upVotesBy.filter((id) => id !== userId)
   target.downVotesBy = target.downVotesBy.filter((id) => id !== userId)
 
@@ -68,28 +68,28 @@ const threadDetailSlice = createSlice({
     item: null,
     isLoading: false,
     isMutating: false,
-    error: null,
+    error: null
   },
   reducers: {
-    clearThreadDetail(state) {
+    clearThreadDetail (state) {
       state.item = null
       state.error = null
     },
-    optimisticVoteDetailThread(state, action) {
+    optimisticVoteDetailThread (state, action) {
       const { userId, voteType } = action.payload
 
       if (state.item) {
         applyVote(state.item, userId, voteType)
       }
     },
-    optimisticVoteComment(state, action) {
+    optimisticVoteComment (state, action) {
       const { commentId, userId, voteType } = action.payload
       const comment = state.item?.comments.find((item) => item.id === commentId)
 
       if (comment) {
         applyVote(comment, userId, voteType)
       }
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -117,12 +117,12 @@ const threadDetailSlice = createSlice({
         state.error = action.payload
         state.isMutating = false
       })
-  },
+  }
 })
 
 export const {
   clearThreadDetail,
   optimisticVoteComment,
-  optimisticVoteDetailThread,
+  optimisticVoteDetailThread
 } = threadDetailSlice.actions
 export default threadDetailSlice.reducer

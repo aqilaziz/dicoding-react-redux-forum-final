@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { loginUser } from '../states/auth/authSlice.js'
 import { useAppDispatch, useAppSelector } from '../states/hooks.js'
 
-export default function LoginPage() {
+export default function LoginPage () {
   const navigate = useNavigate()
   const location = useLocation()
   const dispatch = useAppDispatch()
@@ -11,7 +11,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  async function handleSubmit(event) {
+  async function handleSubmit (event) {
     event.preventDefault()
     await dispatch(loginUser({ email, password })).unwrap()
     navigate(location.state?.from || '/')

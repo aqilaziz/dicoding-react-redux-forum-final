@@ -10,7 +10,7 @@ export const fetchLeaderboards = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 const leaderboardsSlice = createSlice({
@@ -18,7 +18,7 @@ const leaderboardsSlice = createSlice({
   initialState: {
     items: [],
     isLoading: false,
-    error: null,
+    error: null
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -34,7 +34,7 @@ const leaderboardsSlice = createSlice({
         state.error = action.payload
         state.isLoading = false
       })
-  },
+  }
 })
 
 export default leaderboardsSlice.reducer

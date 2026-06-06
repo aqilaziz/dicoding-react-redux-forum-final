@@ -1,4 +1,4 @@
-export default function CategoryFilter({ categories, activeCategory, onChange }) {
+export default function CategoryFilter ({ categories, activeCategory, onChange }) {
   return (
     <aside className="panel">
       <h2>Kategori</h2>

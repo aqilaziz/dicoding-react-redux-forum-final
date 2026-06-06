@@ -14,12 +14,12 @@ describe('ThreadCard component', () => {
       ownerId: 'user-1',
       totalComments: 2,
       upVotesBy: [],
-      downVotesBy: [],
+      downVotesBy: []
     }
     const owner = {
       id: 'user-1',
       name: 'Aqil',
-      avatar: 'https://example.com/avatar.png',
+      avatar: 'https://example.com/avatar.png'
     }
 
     render(
@@ -30,7 +30,7 @@ describe('ThreadCard component', () => {
           thread={thread}
           onVote={() => {}}
         />
-      </MemoryRouter>,
+      </MemoryRouter>
     )
 
     expect(screen.getByRole('link', { name: 'Belajar Redux' })).toHaveAttribute('href', '/threads/thread-1')

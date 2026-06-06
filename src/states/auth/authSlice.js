@@ -15,7 +15,7 @@ export const fetchLoggedUser = createAsyncThunk(
       api.removeToken()
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 export const loginUser = createAsyncThunk(
@@ -28,7 +28,7 @@ export const loginUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 export const registerUser = createAsyncThunk(
@@ -40,7 +40,7 @@ export const registerUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 const authSlice = createSlice({
@@ -49,16 +49,16 @@ const authSlice = createSlice({
     user: null,
     isInitializing: true,
     isLoading: false,
-    error: null,
+    error: null
   },
   reducers: {
-    logout(state) {
+    logout (state) {
       api.removeToken()
       state.user = null
     },
-    clearAuthError(state) {
+    clearAuthError (state) {
       state.error = null
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -97,7 +97,7 @@ const authSlice = createSlice({
         state.error = action.payload
         state.isLoading = false
       })
-  },
+  }
 })
 
 export const { clearAuthError, logout } = authSlice.actions

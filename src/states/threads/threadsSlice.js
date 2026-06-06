@@ -10,7 +10,7 @@ export const fetchThreads = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 export const createThread = createAsyncThunk(
@@ -22,7 +22,7 @@ export const createThread = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message)
     }
-  },
+  }
 )
 
 export const voteThread = createAsyncThunk(
@@ -34,10 +34,10 @@ export const voteThread = createAsyncThunk(
     } catch (error) {
       return rejectWithValue({ ...payload, message: error.message })
     }
-  },
+  }
 )
 
-function applyVote(thread, userId, voteType) {
+function applyVote (thread, userId, voteType) {
   thread.upVotesBy = thread.upVotesBy.filter((id) => id !== userId)
   thread.downVotesBy = thread.downVotesBy.filter((id) => id !== userId)
 
@@ -57,20 +57,20 @@ const threadsSlice = createSlice({
     activeCategory: 'all',
     isLoading: false,
     isMutating: false,
-    error: null,
+    error: null
   },
   reducers: {
-    setActiveCategory(state, action) {
+    setActiveCategory (state, action) {
       state.activeCategory = action.payload
     },
-    optimisticVoteThread(state, action) {
+    optimisticVoteThread (state, action) {
       const { threadId, userId, voteType } = action.payload
       const thread = state.items.find((item) => item.id === threadId)
 
       if (thread) {
         applyVote(thread, userId, voteType)
       }
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -98,7 +98,7 @@ const threadsSlice = createSlice({
         state.error = action.payload
         state.isMutating = false
       })
-  },
+  }
 })
 
 export const { optimisticVoteThread, setActiveCategory } = threadsSlice.actions

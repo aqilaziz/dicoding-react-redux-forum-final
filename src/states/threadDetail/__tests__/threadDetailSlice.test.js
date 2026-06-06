@@ -3,7 +3,7 @@ import threadDetailReducer, {
   clearThreadDetail,
   createComment,
   optimisticVoteComment,
-  optimisticVoteDetailThread,
+  optimisticVoteDetailThread
 } from '../threadDetailSlice.js'
 
 describe('threadDetail reducer', () => {
@@ -14,15 +14,15 @@ describe('threadDetail reducer', () => {
     comments: [{
       id: 'comment-1',
       upVotesBy: [],
-      downVotesBy: [],
-    }],
+      downVotesBy: []
+    }]
   }
 
   const stateWithDetail = {
     item: detailThread,
     isLoading: false,
     isMutating: false,
-    error: null,
+    error: null
   }
 
   it('skenario: menghapus detail thread ketika halaman detail ditinggalkan', () => {
@@ -35,7 +35,7 @@ describe('threadDetail reducer', () => {
   it('skenario: menerapkan optimistic vote pada detail thread', () => {
     const state = threadDetailReducer(stateWithDetail, optimisticVoteDetailThread({
       userId: 'user-1',
-      voteType: 'up-vote',
+      voteType: 'up-vote'
     }))
 
     expect(state.item.upVotesBy).toContain('user-1')
@@ -46,7 +46,7 @@ describe('threadDetail reducer', () => {
     const state = threadDetailReducer(stateWithDetail, optimisticVoteComment({
       commentId: 'comment-1',
       userId: 'user-1',
-      voteType: 'down-vote',
+      voteType: 'down-vote'
     }))
 
     expect(state.item.comments[0].downVotesBy).toContain('user-1')

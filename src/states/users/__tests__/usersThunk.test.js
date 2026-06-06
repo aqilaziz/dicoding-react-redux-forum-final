@@ -13,8 +13,8 @@ describe('users thunk', () => {
     vi.spyOn(api, 'getAllUsers').mockResolvedValue({ users })
     const store = configureStore({
       reducer: {
-        users: usersReducer,
-      },
+        users: usersReducer
+      }
     })
 
     await store.dispatch(fetchUsers())

@@ -13,7 +13,7 @@ import ThreadDetailPage from './pages/ThreadDetailPage.jsx'
 import { useAppDispatch } from './states/hooks.js'
 import { fetchLoggedUser } from './states/auth/authSlice.js'
 
-export default function App() {
+export default function App () {
   const dispatch = useAppDispatch()
 
   useEffect(() => {

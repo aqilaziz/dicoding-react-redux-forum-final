@@ -2,12 +2,12 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../states/hooks.js'
 import { logout } from '../states/auth/authSlice.js'
 
-export default function AppLayout() {
+export default function AppLayout () {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { user } = useAppSelector((state) => state.auth)
 
-  function onLogout() {
+  function onLogout () {
     dispatch(logout())
     navigate('/')
   }
@@ -20,18 +20,20 @@ export default function AppLayout() {
           <nav className="nav">
             <NavLink to="/">Threads</NavLink>
             <NavLink to="/leaderboards">Leaderboard</NavLink>
-            {user ? (
+            {user
+              ? (
               <>
                 <NavLink to="/threads/new">Buat Thread</NavLink>
                 <span>{user.name}</span>
                 <button type="button" onClick={onLogout}>Keluar</button>
               </>
-            ) : (
+                )
+              : (
               <>
                 <NavLink to="/login">Masuk</NavLink>
                 <NavLink to="/register">Daftar</NavLink>
               </>
-            )}
+                )}
           </nav>
         </div>
       </header>

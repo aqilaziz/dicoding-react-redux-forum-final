@@ -1,6 +1,6 @@
 import { getVoteStatus } from '../utils/format.js'
 
-export default function VoteButtons({ item, userId, onVote }) {
+export default function VoteButtons ({ item, userId, onVote }) {
   const voteStatus = getVoteStatus(item, userId)
 
   return (

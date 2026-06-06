@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../states/hooks.js'
 import { fetchThreads, optimisticVoteThread, setActiveCategory, voteThread } from '../states/threads/threadsSlice.js'
 import { fetchUsers } from '../states/users/usersSlice.js'
 
-export default function HomePage() {
+export default function HomePage () {
   const dispatch = useAppDispatch()
   const { user } = useAppSelector((state) => state.auth)
   const { items: threads, activeCategory, isLoading, error } = useAppSelector((state) => state.threads)
@@ -20,13 +20,13 @@ export default function HomePage() {
   const userMap = useMemo(() => new Map(users.map((item) => [item.id, item])), [users])
   const categories = useMemo(
     () => [...new Set(threads.map((thread) => thread.category).filter(Boolean))],
-    [threads],
+    [threads]
   )
   const filteredThreads = activeCategory === 'all'
     ? threads
     : threads.filter((thread) => thread.category === activeCategory)
 
-  function handleVote(threadId, voteType) {
+  function handleVote (threadId, voteType) {
     if (!user) {
       return
     }

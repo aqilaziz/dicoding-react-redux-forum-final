@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-export default function CommentForm({ isLoading, onSubmit }) {
+export default function CommentForm ({ isLoading, onSubmit }) {
   const [content, setContent] = useState('')
 
-  function handleSubmit(event) {
+  function handleSubmit (event) {
     event.preventDefault()
     onSubmit(content)
     setContent('')

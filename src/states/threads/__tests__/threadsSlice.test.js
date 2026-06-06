@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import threadsReducer, {
   fetchThreads,
   optimisticVoteThread,
-  setActiveCategory,
+  setActiveCategory
 } from '../threadsSlice.js'
 
 describe('threads reducer', () => {
@@ -11,7 +11,7 @@ describe('threads reducer', () => {
     activeCategory: 'all',
     isLoading: false,
     isMutating: false,
-    error: null,
+    error: null
   }
 
   it('skenario: mengubah kategori aktif saat pengguna memilih filter kategori', () => {
@@ -26,12 +26,12 @@ describe('threads reducer', () => {
       items: [{
         id: 'thread-1',
         upVotesBy: [],
-        downVotesBy: ['user-1'],
-      }],
+        downVotesBy: ['user-1']
+      }]
     }, optimisticVoteThread({
       threadId: 'thread-1',
       userId: 'user-1',
-      voteType: 'up-vote',
+      voteType: 'up-vote'
     }))
 
     expect(state.items[0].upVotesBy).toContain('user-1')
